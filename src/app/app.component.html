@@ -1,0 +1,45 @@
+
+<h1>{{title}}</h1>
+
+Initial Date:
+<h4>{{ date }}</h4>
+
+Initial Date with date pipe:
+<h4>{{ date | date }}</h4>
+
+Initial Date with custom date pipe:
+<h4>{{ date | mypipe }}</h4>
+
+Initial Date with custom date pipe and custom format:
+<h4>{{ date | mypipe: 'YYYY-MM-DDD HH:mm' }}</h4>
+
+
+
+
+
+
+Age:
+<input type="text" [(ngModel)]="model.age" (ngModelChange)="updateFilters()" />
+<br />
+Name:
+<input type="text" [(ngModel)]="model.name" (ngModelChange)="updateFilters()" />
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of personel | filter :filter;">
+      <td>{{p.name }}</td>
+      <td>{{p.age}}</td>
+    </tr>
+  </tbody>
+</table>
+
+{{model | json}}
+
+<router-outlet></router-outlet>
